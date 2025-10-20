@@ -23,16 +23,26 @@ class AuthController {
      * Critical for user experience and accessibility
      */
     static setupEventListeners() {
-        // Form submission handlers
-        document.getElementById('loginForm').addEventListener('submit', this.handleLogin.bind(this));
-        document.getElementById('registerForm').addEventListener('submit', this.handleRegister.bind(this));
-        document.getElementById('forgotPasswordForm').addEventListener('submit', this.handleForgotPassword.bind(this));
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) loginForm.addEventListener('submit', this.handleLogin.bind(this));
 
-        // Real-time validation for better UX
-        document.getElementById('registerUsername').addEventListener('input', this.validateUsername);
-        document.getElementById('registerEmail').addEventListener('input', this.validateEmail);
-        document.getElementById('registerPassword').addEventListener('input', this.validatePassword);
-        document.getElementById('confirmPassword').addEventListener('input', this.validatePasswordConfirm);
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) registerForm.addEventListener('submit', this.handleRegister.bind(this));
+
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+        if (forgotPasswordForm) forgotPasswordForm.addEventListener('submit', this.handleForgotPassword.bind(this));
+
+        const registerUsername = document.getElementById('registerUsername');
+        if (registerUsername) registerUsername.addEventListener('input', this.validateUsername);
+
+        const registerEmail = document.getElementById('registerEmail');
+        if (registerEmail) registerEmail.addEventListener('input', this.validateEmail);
+
+        const registerPassword = document.getElementById('registerPassword');
+        if (registerPassword) registerPassword.addEventListener('input', this.validatePassword);
+
+        const confirmPassword = document.getElementById('confirmPassword');
+        if (confirmPassword) confirmPassword.addEventListener('input', this.validatePasswordConfirm);
     }
 
     /**
@@ -123,11 +133,6 @@ class AuthController {
             setTimeout(() => {
                 window.location.href = 'homepage.html';
             }, 1500);
-
-            document.getElementByID("loginBtn").addEventListner(click, function(){
-                window.location.href = "homepage.html";
-            });
-
         } catch (error) {
             this.showNotification('Login failed. Please check your credentials.', 'error');
         } finally {
