@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPals - Login</title>
+    <link rel="stylesheet" href="login_registration_ResetPass.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Application Container -->
+    <div class="app-container">
+        <!-- Login Form - Primary entry point for existing users -->
+        <div class="form-wrapper" id="loginContainer">
+            <div class="auth-card">
+                <!-- Brand Identity Section -->
+                <div class="brand-header">
+                    <div class="paw-logo">
+                        <div class="paw-pad main-pad"></div>
+                        <div class="paw-pad toe-pad-1"></div>
+                        <div class="paw-pad toe-pad-2"></div>
+                        <div class="paw-pad toe-pad-3"></div>
+                        <div class="paw-pad toe-pad-4"></div>
+                    </div>
+                    <h1 class="app-title">PawPals</h1>
+                    <h2 class="page-subtitle">Welcome</h2>
+                </div>
+                
+                <!-- Login Authentication Form -->
+                <form class="auth-form" id="loginForm" novalidate>
+                    <div class="input-group">
+                        <input type="text" 
+                               class="form-input" 
+                               placeholder="Username" 
+                               id="loginUsername" 
+                               required 
+                               aria-label="Username"
+                               autocomplete="username">
+                        <span class="error-message" id="loginUsernameError"></span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="password" 
+                               class="form-input" 
+                               placeholder="Password" 
+                               id="loginPassword" 
+                               required 
+                               aria-label="Password"
+                               autocomplete="current-password">
+                        <span class="error-message" id="loginPasswordError"></span>
+                    </div>
+                    
+                    <!-- Remember me feature - high priority user request for convenience -->
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            Remember me
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" id="loginBtn">
+                        <span class="btn-text" onclick="AuthController.goToLogin()">Log-in</span>
+                        <div class="loading-spinner hidden"></div>
+                    </button>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="AuthController.goToRegister()">
+                            Create new account
+                        </button>
+                        <button type="button" class="btn-link" onclick="AuthController.goToReset()">
+                            Forgot password?
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System for User Feedback -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script src="authentication.js" defer></script>
+</body>
+</html>
